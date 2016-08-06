@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="com.robbypond:boilerpipe:1.2.3" type="repository">
+    <properties maven-id="com.robbypond:boilerpipe:1.2.3" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/boilerpipe-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/nekohtml-1.9.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xercesImpl-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xml-apis-1.4.01.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jericho-html-3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

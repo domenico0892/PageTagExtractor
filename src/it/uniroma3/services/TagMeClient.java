@@ -1,3 +1,5 @@
+package it.uniroma3.services;
+
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import javax.ws.rs.client.Client;
@@ -19,15 +21,15 @@ public class TagMeClient {
         this.client = ClientBuilder.newClient();
     }
 
-    public String callReturnString(String lang, String incAb, String incCat, String text) {
-        this.hello = client.target(SERVICE_URL).queryParam("lang", lang).queryParam("include_abastract", incAb).queryParam("include_categories", incCat)
+    public String callReturnString(String incAb, String incCat, String text) {
+        this.hello = client.target(SERVICE_URL).queryParam("include_abastract", incAb).queryParam("include_categories", incCat)
                 .queryParam("gcube-token", TOKEN).queryParam("text", text);
         String result = hello.request().accept(MediaType.APPLICATION_JSON).get().readEntity(String.class);
         return result;
     }
 
-    public Document callReturnDocument(String lang, String incAb, String incCat, String text) {
-        Document doc = Document.parse(this.callReturnString(lang, incAb, incCat, text));
+    public Document callReturnDocument(String incAb, String incCat, String text) {
+        Document doc = Document.parse(this.callReturnString(incAb, incCat, text));
         return doc;
     }
 

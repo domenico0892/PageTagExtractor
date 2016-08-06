@@ -1,3 +1,5 @@
+package it.uniroma3.db;
+
 import com.mongodb.MongoClient;
 
 /**
