@@ -33,7 +33,9 @@ public class PageTagExtractor {
             for (Document tweet : tweets) {
 
                 //estraggo i tag dal testo del tweet e lo aggiorno
-                doc = tagMeClient.callReturnDocument("true", "true", tweet.getString("cleanedTweet"));
+                String cleanedTweet="";
+                cleanedTweet = tweet.getString("cleanedTweet");
+                doc = tagMeClient.callReturnDocument("true", "true", cleanedTweet);
                 collTweet.replaceOne(new Document().append("_id", tweet.getObjectId("_id")), tweet.append("tagme", doc).append("is_analyzed", "true"));
 
                 //gestione della pagina
@@ -41,7 +43,9 @@ public class PageTagExtractor {
                 for (String url : urls) {
                     System.out.println("Url: " + url);
                     FindIterable<Document> page = collPagine.find(Document.parse("{\"url\":\"" + url + "\"}"));
-                    if (!page.iterator().hasNext()) { //vuol dire che la pagina non è presente
+
+                    //se la pagina non è presente la scarico
+                    if (!page.iterator().hasNext()) {
                         HtmlPage hp = htmlDownloader.getPageFromUrl(url);
                         String html = hp.getWebResponse().getContentAsString();
                         String urlVero = hp.getWebResponse().getWebRequest().getUrl().toString();
@@ -50,8 +54,16 @@ public class PageTagExtractor {
                     }
                     page = collPagine.find(Document.parse("{\"url\":\"" + url + "\"}"));
                     doc = page.iterator().next();
+
+                    //controllo se il testo del tweet si trova nel testo della pagina
+                    boolean contains = false;
+                    if (doc.getString("testo").toLowerCase().contains(cleanedTweet.toLowerCase().substring(5)))
+                        contains = true;
+
                     doc2 = tagMeClient.callReturnDocument("true", "true", (String) doc.get("testo"));
                     collPagine.replaceOne(new Document().append("_id", doc.getObjectId("_id")), doc.append("tagme", doc2));
+                    if (!(tweet.containsKey("containsPageText") && tweet.getBoolean("containsPageText").equals(true)))
+                        collTweet.replaceOne(new Document().append("_id", tweet.getObjectId("_id")), tweet.append("containsPageText", contains));
                 }
                 break;
             }

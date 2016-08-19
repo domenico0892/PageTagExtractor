@@ -13,6 +13,5 @@
     <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="net.sourceforge.htmlunit:htmlunit:2.23" level="project" />
     <orderEntry type="library" name="com.robbypond:boilerpipe:1.2.3" level="project" />
-    <orderEntry type="library" name="de.l3s.boilerpipe:boilerpipe:1.1.0" level="project" />
   </component>
 </module>
