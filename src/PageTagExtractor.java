@@ -5,6 +5,12 @@ import com.mongodb.client.MongoCollection;
 import org.bson.BsonArray;
 import org.bson.Document;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +20,22 @@ public class PageTagExtractor {
 
     public static void main(String[] args) {
 
-        MongoCollection<Document> collTweet = MongoConnection.getInstance().getClient().getDatabase("twitter").getCollection("tweets");
+        /*TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager(){
+            public X509Certificate[] getAcceptedIssuers(){return null;}
+            public void checkClientTrusted(X509Certificate[] certs, String authType){}
+            public void checkServerTrusted(X509Certificate[] certs, String authType){}
+        }};
+
+        // Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
+            ;
+        }*/
+
+        MongoCollection<Document> collTweet = MongoConnection.getInstance().getClient().getDatabase("export").getCollection("export");
         MongoCollection<Document> collPagine = MongoConnection.getInstance().getClient().getDatabase("pagine").getCollection("pagine");
         HtmlDownloader htmlDownloader = new HtmlDownloader();
         TagMeClient tagMeClient = new TagMeClient();
