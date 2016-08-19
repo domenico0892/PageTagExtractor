@@ -22,7 +22,7 @@ public class TagMeClient {
     }
 
     public String callReturnString(String incAb, String incCat, String text) {
-        this.hello = client.target(SERVICE_URL).queryParam("include_abastract", incAb).queryParam("include_categories", incCat)
+        this.hello = client.target(SERVICE_URL).queryParam("include_abstract", incAb).queryParam("include_categories", incCat)
                 .queryParam("gcube-token", TOKEN).queryParam("text", text);
         String result = hello.request().accept(MediaType.APPLICATION_JSON).get().readEntity(String.class);
         return result;

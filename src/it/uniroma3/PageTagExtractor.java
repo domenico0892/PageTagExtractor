@@ -26,10 +26,10 @@ public class PageTagExtractor {
 
         while (true) {
 
-            //cerco i tweet non ancora analizzati
+            //cerco i tweet non ancora analizzati che hanno almeno un url condiviso
             FindIterable<Document> tweets = collTweet.find(Document.parse("{$and: [{\"is_analyzed\": {$exists: false}}, {\"urls\": {$not: {$size: 0}}}]}"));
 
-            //per ciascun tweet...
+            //per ciascun tweet trovato...
             for (Document tweet : tweets) {
 
                 //estraggo i tag dal testo del tweet e lo aggiorno
