@@ -7,12 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="javax.ws.rs:javax.ws.rs-api:2.0.1" level="project" />
-    <orderEntry type="library" name="org.glassfish.jersey.core:jersey-client:2.23" level="project" />
-    <orderEntry type="library" name="org.mongodb:mongo-java-driver:3.3.0" level="project" />
-    <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="com.mashape.unirest:unirest-java:1.4.9" level="project" />
+    <orderEntry type="library" name="org.mongodb:mongodb-driver:3.3.0" level="project" />
     <orderEntry type="library" name="net.sourceforge.htmlunit:htmlunit:2.23" level="project" />
     <orderEntry type="library" name="com.robbypond:boilerpipe:1.2.3" level="project" />
-    <orderEntry type="library" name="com.mashape.unirest:unirest-java:1.4.9" level="project" />
   </component>
 </module>
