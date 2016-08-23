@@ -2,7 +2,6 @@ package it.uniroma3.services;
 
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import java.io.IOException;
@@ -10,11 +9,11 @@ import java.io.IOException;
 /**
  * Created by ai-lab on 27/07/16.
  */
-public class HtmlDownloader {
+public class HtmlUnitDownloader {
 
     private WebClient webClient;
 
-    public HtmlDownloader () {
+    public HtmlUnitDownloader() {
         this.webClient = new WebClient();
         this.webClient.getOptions().setUseInsecureSSL(true);
         this.webClient.setAjaxController(new NicelyResynchronizingAjaxController());
@@ -25,12 +24,13 @@ public class HtmlDownloader {
         this.webClient.getOptions().setCssEnabled(false);
         this.webClient.getOptions().setJavaScriptEnabled(true);
         this.webClient.getOptions().setRedirectEnabled(true);
+        this.webClient.getOptions().setTimeout(30000);
     }
 
     public HtmlPage getPageFromUrl (String url) {
         HtmlPage page = null;
         try {
-            page = webClient.getPage("https://t.co/DAf9OoPgg8");
+            page = webClient.getPage(url);
         } catch (IOException e) {
             System.err.println("Errore nel download della pagina");
         }

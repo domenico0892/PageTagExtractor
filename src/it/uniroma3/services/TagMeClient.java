@@ -29,7 +29,9 @@ public class TagMeClient {
     }
 
     public Document callReturnDocument(String incAb, String incCat, String text) {
-        Document doc = Document.parse(this.callReturnString(incAb, incCat, text));
+        String response = this.callReturnString(incAb, incCat, text);
+        System.out.println(response);
+        Document doc = Document.parse(response);
         return doc;
     }
 
