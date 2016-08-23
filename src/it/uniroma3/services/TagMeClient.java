@@ -4,7 +4,6 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.bson.Document;
-import javax.ws.rs.client.ClientBuilder;
 
 /**
  * Created by ai-lab on 27/07/16.

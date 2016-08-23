@@ -3,17 +3,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mongodb.util.JSON;
-import org.apache.http.client.methods.RequestBuilder;
 import org.bson.Document;
 import org.json.JSONObject;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.MediaType;
 
 import java.util.Set;
 import java.util.regex.Matcher;
