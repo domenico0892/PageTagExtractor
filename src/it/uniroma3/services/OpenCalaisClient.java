@@ -77,6 +77,10 @@ public class OpenCalaisClient {
         return null;
     }
 
+    public String callReturnTopic (String text) {
+        return this.callReturnJsonObjectSelectRegex(text, ".*/cat.*").get("name").toString().replace("_", " ");
+    }
+
     public Document callReturnDocument(String text) {
         String response = this.callReturnString(text);
         System.out.println(response);

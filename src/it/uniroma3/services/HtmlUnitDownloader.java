@@ -3,6 +3,7 @@ package it.uniroma3.services;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import it.uniroma3.model.PaginaHtml;
 
 import java.io.IOException;
 
@@ -27,19 +28,18 @@ public class HtmlUnitDownloader {
         this.webClient.getOptions().setTimeout(30000);
     }
 
-    public HtmlPage getPageFromUrl (String url) {
+    public PaginaHtml getPaginaFromUrl (String url) {
         HtmlPage page = null;
         try {
             page = webClient.getPage(url);
+            PaginaHtml paginaHtml = new PaginaHtml();
+            paginaHtml.setUrl(url);
+            paginaHtml.setUrlVero(page.getWebResponse().getWebRequest().getUrl().toString());
+            paginaHtml.setHtml(page.getWebResponse().getContentAsString());
+            return paginaHtml;
         } catch (IOException e) {
             System.err.println("Errore nel download della pagina");
+            return null;
         }
-       return page;
     }
 }
-
-    /*
-                System.out.println(page.asText());
-                System.out.println(response.getWebRequest().getUrl());
-                String content = response.getContentAsString();
-//System.out.println(content);*/
